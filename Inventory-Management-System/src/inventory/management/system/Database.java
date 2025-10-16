@@ -37,7 +37,8 @@ public abstract class Database {
     
     
     public boolean contains(String key ){
-        for(int i = 0;i<records.size();i++){
+        int n = records.size();
+        for(int i = 0;i<n;i++){
             if(records.get(i).getSearchKey().equals(key))
                 return true;
         }
@@ -45,7 +46,8 @@ public abstract class Database {
     }
     
     public Record getRecord(String key){
-        for(int i = 0;i<records.size();i++){
+        int n = records.size();
+        for(int i = 0;i<n;i++){
             if(records.get(i).getSearchKey().equals(key))
                 return records.get(i);
         }
@@ -57,7 +59,13 @@ public abstract class Database {
     }
     
     public void deleteRecord(String key){
-        records.removeIf(record -> record.getSearchKey().equals(key));
+        int n = records.size();
+        for (int i = 0; i < n; i++) {
+            if (records.get(i).getSearchKey().equals(key)) {
+                records.remove(i);
+                break; 
+            }
+        }
     }
     
     
@@ -67,21 +75,17 @@ public abstract class Database {
     
     
     public void saveToFile(){
-        try {
-            
+    
             try (BufferedWriter f = new BufferedWriter(new FileWriter(filename))) {
-                for(int i = 0;i<records.size();i++){
+                int n = records.size();
+                for(int i = 0;i<n;i++){
                     f.write(records.get(i).lineRepresentation() + "\n");
                 }
-                
-                
-            }
-            
-            
-            
-        } catch (IOException ex) {
+            }catch (IOException ex) {
             System.out.println("Error in saving file" + ex.getMessage());
         }
+            
+  
     }
     
 
