@@ -3,7 +3,7 @@ package inventory.management.system;
 
 
 public class EmployeeUser extends Record {
-     
+    //employeeId, Name, Email, Address, PhoneNumber 
     private String employeeId;
     private String name;
     private String email;
