@@ -29,3 +29,4 @@ bin/
 ### Mac OS ###
 .DS_Store
 /build/
+/Inventory-Management-System/nbproject/private/
