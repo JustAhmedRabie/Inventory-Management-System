@@ -15,7 +15,7 @@ public abstract class Database {
     protected ArrayList<Record> records;
     protected String filename;
 
-    public Database(ArrayList<Record> records, String filename) {
+    public Database(String filename) {
         this.filename = filename;
         this.records = new ArrayList<>();
     }
