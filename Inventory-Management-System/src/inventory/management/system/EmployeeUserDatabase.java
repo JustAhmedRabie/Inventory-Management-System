@@ -1,6 +1,5 @@
 
 package inventory.management.system;
-import java.util.ArrayList;
 
 public class EmployeeUserDatabase extends Database {
 
