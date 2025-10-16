@@ -1,4 +1,4 @@
-﻿package inventory.management.system;
+package inventory.management.system;
 
 public class EmployeeRole extends UserRole
 {
