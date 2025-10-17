@@ -28,7 +28,17 @@ public class CustomerProduct extends Record {
 
     @Override
     public String lineRepresentation() {
-        return customerSSN + "," + productID + "," + purchaseDate.getDayOfMonth()+"-"+purchaseDate.getMonthValue()+"-"+purchaseDate.getYear() + "," + paid;
+        String month,day;
+        month = String.valueOf(purchaseDate.getMonthValue());
+        day = String.valueOf(purchaseDate.getDayOfMonth());
+        
+        if(month.length() == 1)
+            month = "0"+ month ;
+        
+        if(day.length() == 1)
+            day = "0"+ day ;
+        
+        return customerSSN + "," + productID + "," +day+"-"+month+"-"+purchaseDate.getYear() + "," + paid;
     }
 
     public boolean isPaid(){
