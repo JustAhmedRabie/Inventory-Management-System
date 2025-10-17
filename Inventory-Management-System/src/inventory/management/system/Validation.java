@@ -1,0 +1,83 @@
+package inventory.management.system;
+
+import java.time.LocalDate;
+
+public class Validation {
+
+    public static boolean isNonEmpty(String value) {
+        return value != null && !value.trim().isEmpty();
+    }
+
+    public static boolean isValidDate(String dateStr) {
+        if (!isNonEmpty(dateStr)) return false;
+
+        String[] parts = dateStr.split("-");
+        if (parts.length != 3) return false;
+
+        try {
+            int day = Integer.parseInt(parts[0]);
+            int month = Integer.parseInt(parts[1]);
+            int year = Integer.parseInt(parts[2]);
+            LocalDate date = LocalDate.of(year, month, day);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public static boolean isValidNumber(String n) {
+        if (!isNonEmpty(n)) return false;
+        for(int i=0;i<n.length();i++){
+            char x = n.charAt(i);
+            if(x >= '0' && x <= '9')
+                continue;
+            else return false;
+        }
+        return true;
+    }
+
+    public static boolean isValidID(String id, Database x) {
+        return isValidNumber(id) && !x.contains(id);
+    }
+
+    public static boolean isValidEmail(String email) {
+        if (!isNonEmpty(email)) return false;
+
+        int atIndex = email.indexOf('@');
+        int lastAtIndex = email.lastIndexOf('@');
+
+        if (atIndex == 0 || atIndex == -1 || atIndex != lastAtIndex|| atIndex == email.length()-1 ||email.contains(" ") ) {
+            return false;
+        }
+        char beforeAt = email.charAt(atIndex - 1);
+        if (!Character.isLetterOrDigit(beforeAt) || email.contains("..")) {
+            return false;
+        }
+
+        String domainPart = email.substring(atIndex+1);
+        int dotIndex = domainPart.indexOf('.');
+
+        if (dotIndex == -1 || dotIndex == 0) {
+            return false;
+        }
+        int lastDotIndex = domainPart.lastIndexOf('.');
+        if (lastDotIndex == domainPart.length() - 1) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isValidName(String name) {
+        if (!isNonEmpty(name)) return false;
+        for (int i = 0; i < name.length(); i++) {
+            char c = name.charAt(i);
+            if (!Character.isLetter(c) && c != ' '  && c != '\'') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+}
+
+
