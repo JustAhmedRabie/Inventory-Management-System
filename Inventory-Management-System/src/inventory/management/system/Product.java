@@ -21,6 +21,21 @@ public class Product extends Record{
         this.quantity = quantity;
         this.price = price;
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+    
+    
+    
     
 
 
