@@ -4,3 +4,4 @@ E1300,test,bigo@gmail.com,akex,01116746868
 E1320,te2st,big32o@gmail.com,akex,01116746868
 E1320,te2st,big32o@gmail.com,akex,01116746868
 E1320,te2st,big32o@gmail.com,akex,01116746868
+E1215,seif,eidsaif@gmail.com,alex,01205039733
