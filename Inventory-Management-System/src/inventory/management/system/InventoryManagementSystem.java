@@ -181,7 +181,7 @@ public class InventoryManagementSystem {
             }
         } while (loggedInEmployee == null);
 
-        System.out.println("Login successful! Welcome " + loggedInEmployee.getSearchKey());
+        System.out.println("Login successful! Welcome " + loggedInEmployee.getName());
         employee(loggedInEmployee);
     }
 
@@ -292,18 +292,17 @@ public class InventoryManagementSystem {
     }
 
     private static void viewPurchasingOperations(EmployeeRole employeeRole) {
-    System.out.println("\n--- Purchasing Operations ---");
+        System.out.println("\n--- Purchasing Operations ---");
 
-    Record[] operations = employeeRole.getListOfPurchasingOperations(); // if it returns Record[]
-    if (operations == null || operations.length == 0) {
-        System.out.println("No purchasing operations found.");
-    } else {
-        for (Record operation : operations) {
-            System.out.println(operation.lineRepresentation());
+        Record[] operations = employeeRole.getListOfPurchasingOperations();
+        if (operations == null || operations.length == 0) {
+            System.out.println("No purchasing operations found.");
+        } else {
+            for (Record operation : operations) {
+                System.out.println(operation.lineRepresentation());
+            }
         }
     }
-}
-
 
     private static void purchaseProduct(Scanner scanner, EmployeeRole employeeRole) {
         System.out.println("\n--- Purchase Product ---");
@@ -404,5 +403,4 @@ public class InventoryManagementSystem {
             System.out.println("Failed to apply payment. Check customer SSN and purchase date.");
         }
     }
-
 }
