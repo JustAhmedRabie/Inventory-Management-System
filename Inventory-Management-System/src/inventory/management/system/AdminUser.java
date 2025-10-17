@@ -1,8 +1,8 @@
 package inventory.management.system;
 
 public class AdminUser {
-    private static final String username="user1";
-    private static final String password="123";
+    private static final String username="admin";
+    private static final String password="12345";
 
     public static String getUsername() {
         return username;
