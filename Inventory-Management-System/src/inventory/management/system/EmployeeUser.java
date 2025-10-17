@@ -29,6 +29,14 @@ public class EmployeeUser extends Record {
     public String getSearchKey() {
         return employeeId; 
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     
     
 }
