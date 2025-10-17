@@ -37,7 +37,7 @@ public class Validation {
     }
 
     public static boolean isValidID(String id, Database x) {
-        return !x.contains(id);
+        return !x.contains(id.trim());
     }
 
     public static boolean isValidEmail(String email) {

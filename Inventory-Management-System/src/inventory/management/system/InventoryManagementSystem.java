@@ -79,6 +79,7 @@ public class InventoryManagementSystem {
                     do {
                         System.out.print("Enter Employee ID: ");
                         id = scanner.nextLine();
+                        id = id.trim();
                         if (!Validation.isValidID(id, admin.getDatabase())) {
                             System.out.println("Invalid or duplicate ID.");
                         }
