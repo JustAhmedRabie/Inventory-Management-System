@@ -253,6 +253,7 @@ public class InventoryManagementSystem {
         System.out.println("\n--- Add New Product ---");
         System.out.print("Enter Product ID: ");
         String productID = scanner.nextLine();
+        
 
         System.out.print("Enter Product Name: ");
         String productName = scanner.nextLine();
@@ -362,7 +363,7 @@ public class InventoryManagementSystem {
             try {
                 System.out.print("Enter Return Date (DD-MM-YYYY): ");
                 String returnDateStr = scanner.nextLine();
-                purchaseDate = LocalDate.parse(returnDateStr, DATE_FORMATTER);
+                returnDate = LocalDate.parse(returnDateStr, DATE_FORMATTER);
                 validReturnDate = true;
             } catch (DateTimeParseException e) {
                 System.out.println("Invalid date format. Please use DD-MM-YYYY format.");
