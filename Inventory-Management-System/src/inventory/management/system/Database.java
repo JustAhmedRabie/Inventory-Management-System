@@ -28,6 +28,7 @@ public abstract class Database {
             
                 String line;
                 while((line = f.readLine()) != null){
+                    if(line!=null)
                     records.add(createRecordFrom(line));
                 }
                 } catch (IOException ex) {

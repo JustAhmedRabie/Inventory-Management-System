@@ -17,6 +17,8 @@ public class CustomerProductDatabase extends Database{
     @Override
     public Record createRecordFrom(String line) {
         String split[] = line.split(line);
+        if(split.length != 4)
+            return null;
         LocalDate d = LocalDate.parse(split[2], DateTimeFormatter.ofPattern("dd-MM-yyyy")); //check
         CustomerProduct p = new CustomerProduct(split[0],split[1],d);
         p.setPaid(Boolean.parseBoolean(split[3]));
