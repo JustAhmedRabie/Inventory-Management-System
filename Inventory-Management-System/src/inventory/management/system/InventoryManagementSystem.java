@@ -251,11 +251,16 @@ public class InventoryManagementSystem {
 
     private static void addProduct(Scanner scanner, EmployeeRole employeeRole) {
 
+        ProductDatabase productsDatabase = new ProductDatabase("Products.txt");
+        productsDatabase.readFromFile();
         System.out.println("\n--- Add New Product ---");
         System.out.print("Enter Product ID: ");
-        String productID = scanner.nextLine();
-        
-
+        String productID = scanner.nextLine().trim();
+        if (productsDatabase.contains(productID))
+        {
+            System.out.println("Product already exists.");
+            return;
+        }
         System.out.print("Enter Product Name: ");
         String productName = scanner.nextLine();
 
