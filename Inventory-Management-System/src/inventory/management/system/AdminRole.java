@@ -7,7 +7,11 @@ import java.util.ArrayList;
 public class AdminRole extends UserRole {
     
     private EmployeeUserDatabase database;
-    
+
+    public EmployeeUserDatabase getDatabase() {
+        return database;
+    }
+
     public AdminRole(){
         database = new EmployeeUserDatabase("Employees.txt");
         database.readFromFile();

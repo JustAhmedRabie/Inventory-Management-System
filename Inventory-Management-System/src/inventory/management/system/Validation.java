@@ -26,10 +26,10 @@ public class Validation {
     }
 
     public static boolean isValidNumber(String n) {
-        if (!isNonEmpty(n)) return false;
+        if (!isNonEmpty(n) || n.length()!=11) return false;
         for(int i=0;i<n.length();i++){
             char x = n.charAt(i);
-            if(x >= '0' && x <= '9')
+            if(x >= '0' && x <= '9' )
                 continue;
             else return false;
         }
@@ -37,7 +37,7 @@ public class Validation {
     }
 
     public static boolean isValidID(String id, Database x) {
-        return isValidNumber(id) && !x.contains(id);
+        return !x.contains(id);
     }
 
     public static boolean isValidEmail(String email) {
