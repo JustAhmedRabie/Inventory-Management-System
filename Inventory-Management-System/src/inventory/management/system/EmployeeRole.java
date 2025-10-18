@@ -19,12 +19,6 @@ public class EmployeeRole extends UserRole
     public void addProduct(String productID, String productName, String manufacturerName, String supplierName, int quantity, float price)
     {
 
-        if (productsDatabase.contains(productID))
-        {
-            System.out.println("Product already exists.");
-            return;
-        }
-
         Product product = new Product(productID, productName, manufacturerName, supplierName, quantity, price);
         productsDatabase.insertRecord(product);
     }
