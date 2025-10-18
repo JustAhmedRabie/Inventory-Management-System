@@ -1,6 +1,8 @@
 package inventory.management.system;
 
 import java.time.LocalDate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Validation {
 
@@ -41,7 +43,15 @@ public class Validation {
     }
 
     public static boolean isValidEmail(String email) {
-        if (!isNonEmpty(email)) return false;
+
+        String regex = "^[a-zA-Z0-9][._]?[a-zA-Z0-9]+([-._][a-zA-Z0-9]+(_?[a-zA-Z0-9]+)*)*@[a-zA-Z0-9]+([-.][a-zA-Z0-9]+)*\\.[a-zA-Z]{2,4}$";
+
+        Pattern pattern = Pattern.compile(regex);
+
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+
+        /*if (!isNonEmpty(email)) return false;
 
         int atIndex = email.indexOf('@');
         int lastAtIndex = email.lastIndexOf('@');
@@ -64,7 +74,8 @@ public class Validation {
         if (lastDotIndex == domainPart.length() - 1) {
             return false;
         }
-        return true;
+        return true;*/
+
     }
 
     public static boolean isValidName(String name) {
