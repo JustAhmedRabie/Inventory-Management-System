@@ -80,10 +80,13 @@ public class InventoryManagementSystem {
                         System.out.print("Enter Employee ID: ");
                         id = scanner.nextLine();
                         id = id.trim();
-                        if (!Validation.isValidID(id, admin.getDatabase())) {
+                        if (!Validation.isValidID(id, admin.getDatabase()) ) {
                             System.out.println("Invalid or duplicate ID.");
                         }
-                    } while (!Validation.isValidID(id, admin.getDatabase()));
+                        if(!Validation.isValidID(id,'E')){
+                            System.out.println("Invalid Employee ID. (format:E####)");
+                        }
+                    } while (!Validation.isValidID(id, admin.getDatabase())||!Validation.isValidID(id,'E'));
 
                     String name;
                     do {
@@ -259,6 +262,10 @@ public class InventoryManagementSystem {
         if (productsDatabase.contains(productID))
         {
             System.out.println("Product already exists.");
+            return;
+        }
+        if(!Validation.isValidID(productID,'P')){
+            System.out.println("Invalid product ID! (ID format:P####)");
             return;
         }
         System.out.print("Enter Product Name: ");

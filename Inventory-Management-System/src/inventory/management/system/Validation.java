@@ -42,6 +42,22 @@ public class Validation {
         return !x.contains(id.trim());
     }
 
+    public static boolean isValidID(String id,char y){
+        id=id.trim();
+        if(id.length()!=5)
+            return false;
+        if(id.charAt(0)!=y)
+            return false;
+        for(int i=1;i<5;i++){
+            char x = id.charAt(i);
+            if(x >= '0' && x <= '9' )
+                continue;
+            else return false;
+        }
+        return true;
+    }
+
+
     public static boolean isValidEmail(String email) {
 
         String regex = "^[a-zA-Z0-9][._]?[a-zA-Z0-9]+([-._][a-zA-Z0-9]+(_?[a-zA-Z0-9]+)*)*@[a-zA-Z0-9]+([-.][a-zA-Z0-9]+)*\\.[a-zA-Z]{2,4}$";
