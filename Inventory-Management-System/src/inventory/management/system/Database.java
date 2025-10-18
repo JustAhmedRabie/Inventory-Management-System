@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 
 public abstract class Database {
-    protected ArrayList<Record> records;
-    protected String filename;
+    private ArrayList<Record> records;
+    private String filename;
 
     public Database(String filename) {
         this.filename = filename;
