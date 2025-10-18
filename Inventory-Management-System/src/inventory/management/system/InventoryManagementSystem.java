@@ -29,7 +29,7 @@ public class InventoryManagementSystem {
                     employeeLogin();
                     break;
                 case "3":
-                    System.out.println("Goodbye!");
+                    System.out.println("Exiting..");
                     scanner.close();
                     return;
                 default:
