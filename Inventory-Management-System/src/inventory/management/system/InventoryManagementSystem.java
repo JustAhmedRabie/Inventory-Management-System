@@ -384,9 +384,19 @@ public class InventoryManagementSystem {
         }
 
         double refundAmount = employeeRole.returnProduct(customerSSN, productID, purchaseDate, returnDate);
-        if (refundAmount >= 0) {
+        CustomerProductDatabase customerProductDatabase = new CustomerProductDatabase("CustomersProducts.txt");
+        customerProductDatabase.readFromFile();
+        CustomerProduct customerProduct = (CustomerProduct)customerProductDatabase.getRecord(productID);
+
+        if (!customerProduct.isPaid() && refundAmount >= 0)
+        {
+            System.out.println("Product returned successfully!, but it wasn't paid yet so there won't be a refund.");
+        }
+        else if (refundAmount >= 0)
+        {
             System.out.println("Product returned successfully! Refund amount: $" + refundAmount);
-        } else {
+        } else
+        {
             System.out.println("Failed to return product. Check dates and product availability.");
         }
     }
