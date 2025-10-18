@@ -208,7 +208,7 @@ public class InventoryManagementSystem {
                     break;
 
                 case "2":
-                    addProduct(scanner, employeeRole);
+                    addProduct(employeeRole);
                     break;
 
                 case "3":
@@ -216,14 +216,14 @@ public class InventoryManagementSystem {
                     break;
 
                 case "4":
-                    purchaseProduct(scanner, employeeRole);
+                    purchaseProduct(employeeRole);
                     break;
 
                 case "5":
-                    returnProduct(scanner, employeeRole);
+                    returnProduct(employeeRole);
                     break;
                 case "6":
-                    applyPayment(scanner, employeeRole);
+                    applyPayment(employeeRole);
                     break;
 
                 case "7":
@@ -249,7 +249,7 @@ public class InventoryManagementSystem {
         }
     }
 
-    private static void addProduct(Scanner scanner, EmployeeRole employeeRole) {
+    private static void addProduct(EmployeeRole employeeRole) {
 
         ProductDatabase productsDatabase = new ProductDatabase("Products.txt");
         productsDatabase.readFromFile();
@@ -311,7 +311,7 @@ public class InventoryManagementSystem {
         }
     }
 
-    private static void purchaseProduct(Scanner scanner, EmployeeRole employeeRole) {
+    private static void purchaseProduct(EmployeeRole employeeRole) {
         System.out.println("\n--- Purchase Product ---");
 
         System.out.print("Enter Customer SSN: ");
@@ -341,7 +341,7 @@ public class InventoryManagementSystem {
         }
     }
 
-    private static void returnProduct(Scanner scanner, EmployeeRole employeeRole) {
+    private static void returnProduct(EmployeeRole employeeRole) {
         System.out.println("\n--- Return Product ---");
 
         System.out.print("Enter Customer SSN: ");
@@ -384,7 +384,7 @@ public class InventoryManagementSystem {
         }
     }
 
-    private static void applyPayment(Scanner scanner, EmployeeRole employeeRole) {
+    private static void applyPayment(EmployeeRole employeeRole) {
         System.out.println("\n--- Apply Payment ---");
 
         System.out.print("Enter Customer SSN: ");
