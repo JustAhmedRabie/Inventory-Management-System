@@ -15,7 +15,15 @@ public class EmployeeRole extends UserRole
         productsDatabase.readFromFile();
         customerProductDatabase.readFromFile();
     }
+    
+    public void addProduct(String productID, String productName, String manufacturerName, String supplierName, int quantity)
+    {
 
+        Product product = new Product(productID, productName, manufacturerName, supplierName, quantity, 0);
+        productsDatabase.insertRecord(product);
+    }
+    
+    
     public void addProduct(String productID, String productName, String manufacturerName, String supplierName, int quantity, float price)
     {
 
