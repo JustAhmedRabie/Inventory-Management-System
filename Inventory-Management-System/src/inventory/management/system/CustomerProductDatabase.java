@@ -3,7 +3,6 @@ package inventory.management.system;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import static java.time.format.DateTimeFormatter.ofPattern;
 
 
 public class CustomerProductDatabase extends Database{
