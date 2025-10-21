@@ -96,32 +96,40 @@ public class EmployeeRole extends UserRole {
 
     }
 
-    public Product[] getListOfProducts() {
+    public Product[] getListOfProducts()
+    {
         ArrayList<Record> records = productsDatabase.returnAllRecords();
         Product[] products = new Product[records.size()];
-        for (int i = 0; i < records.size(); i++) {
+        for (int i = 0; i < records.size(); i++)
+        {
             products[i] = (Product) records.get(i);
         }
         return products;
     }
 
-    public CustomerProduct[] getListOfPurchasingOperations() {
+    public CustomerProduct[] getListOfPurchasingOperations()
+    {
         ArrayList<Record> records = customerProductDatabase.returnAllRecords();
         CustomerProduct[] list = new CustomerProduct[records.size()];
-        for (int i = 0; i < records.size(); i++) {
+        for (int i = 0; i < records.size(); i++)
+        {
             list[i] = (CustomerProduct) records.get(i);
         }
         return list;
     }
 
-    public boolean purchaseProduct(String customerSSN, String productID, LocalDate purchaseDate) {
-        if (!productsDatabase.contains(productID)) {
+
+    public boolean purchaseProduct(String customerSSN, String productID, LocalDate purchaseDate)
+    {
+        if (!productsDatabase.contains(productID))
+        {
             return false;
         }
 
-        Product product = (Product) productsDatabase.getRecord(productID);
+        Product product = (Product)productsDatabase.getRecord(productID);
 
-        if (product.getQuantity() == 0) {
+        if (product.getQuantity() == 0)
+        {
             return false;
         }
 
@@ -136,25 +144,27 @@ public class EmployeeRole extends UserRole {
         return true;
     }
 
-    public double returnProduct(String customerSSN, String productID, LocalDate purchaseDate, LocalDate returnDate) {
+    public double returnProduct(String customerSSN, String productID, LocalDate purchaseDate, LocalDate returnDate)
+    {
 
-        if (returnDate.isBefore(purchaseDate)) {
+        if (returnDate.isBefore(purchaseDate))
+        {
             return -1;
         }
 
-        if (!productsDatabase.contains(productID)) {
+        if (!productsDatabase.contains(productID))
+        {
             return -1;
         }
 
         String key = customerSSN + "," + productID + "," + purchaseDate;
-        if (!customerProductDatabase.contains(key)) {
+        if (!customerProductDatabase.contains(key))
+        {
             return -1;
         }
-        if (returnDate.isAfter(purchaseDate.plusDays(14))) {
-            return -1;
-        }
+        if (returnDate.isAfter(purchaseDate.plusDays(14))) return -1;
 
-        Product product = (Product) productsDatabase.getRecord(productID);
+        Product product = (Product)productsDatabase.getRecord(productID);
         product.setQuantity(product.getQuantity() + 1);
         customerProductDatabase.deleteRecord(key);
 
@@ -164,24 +174,29 @@ public class EmployeeRole extends UserRole {
         return product.getPrice();
     }
 
-    public boolean applyPayment(String customerSSN, LocalDate purchaseDate) {
+    public boolean applyPayment(String customerSSN, LocalDate purchaseDate)
+    {
         ArrayList<Record> list = customerProductDatabase.returnAllRecords();
         boolean updated = false;
 
-        for (Record record : list) {
+        for (Record record : list)
+        {
             CustomerProduct cp = (CustomerProduct) record;
 
-            if (cp.getCustomerSSN().equals(customerSSN)
-                    && cp.getPurchaseDate().equals(purchaseDate)) {
+            if (cp.getCustomerSSN().equals(customerSSN) &&
+                    cp.getPurchaseDate().equals(purchaseDate))
+            {
 
-                if (!cp.isPaid()) {
+                if (!cp.isPaid())
+                {
                     cp.setPaid(true);
                     updated = true;
                 }
             }
         }
 
-        if (updated) {
+        if (updated)
+        {
             customerProductDatabase.saveToFile();
             return true;
         }
@@ -190,7 +205,8 @@ public class EmployeeRole extends UserRole {
     }
 
     @Override
-    public void logout() {
+    public void logout()
+    {
         productsDatabase.saveToFile();
         customerProductDatabase.saveToFile();
     }
