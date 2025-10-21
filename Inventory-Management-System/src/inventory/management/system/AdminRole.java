@@ -19,6 +19,38 @@ public class AdminRole extends UserRole {
     
     
      public void addEmployee(String employeeId, String name, String email, String address, String phoneNumber) {
+         if(database.contains(employeeId))
+         {
+             System.out.println(employeeId + " Already exsists.");
+             return;
+         }
+         
+         if(!Validation.isValidID(employeeId, 'E'))
+         {
+             System.out.println("Invalid Employee ID. (format:E####)");
+             return;
+         }
+         
+         if(!Validation.isValidEmail(email))
+         {
+             System.out.println("Invalid Email.");
+             return;
+         }
+         
+         if(!Validation.isValidName(name))
+         {
+             System.out.println("Invalid Name.");
+             return;
+         }
+         
+         if(!Validation.isValidNumber(phoneNumber))
+         {
+             System.out.println("Invalid phonenumber.");
+             return;
+         }
+         
+         
+              
          database.insertRecord(new EmployeeUser(employeeId,name,email,address,phoneNumber));
      }
     
@@ -35,7 +67,10 @@ public class AdminRole extends UserRole {
     
      
      public void removeEmployee(String key){
+         if(database.contains(key))
          database.deleteRecord(key);
+         else
+             System.out.println("Employee ID not found.");
      }
      
 
