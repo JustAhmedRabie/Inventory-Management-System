@@ -106,67 +106,38 @@ public class InventoryManagementSystem {
 
     private static void RemoveEmployee(AdminRole admin)
     {
-        String rId;
-        do {
-            System.out.print("Enter Employee ID to remove: ");
-            rId = scanner.nextLine();
-            if (admin.getDatabase().contains(rId)) {
-                admin.removeEmployee(rId);
-                System.out.println("Employee removed.");
-                break;
-            } else {
-                System.out.println("ID not found");
-            }
-        } while (!admin.getDatabase().contains(rId));
+        String id;
+        System.out.print("Enter Employee ID to remove: ");
+        id = scanner.nextLine();
+        admin.removeEmployee(id);
+
     }
 
     private static void AddEmployee(AdminRole admin)
     {
         String id;
-        do {
-            System.out.print("Enter Employee ID: ");
-            id = scanner.nextLine();
-            id = id.trim();
-            if (!Validation.isValidID(id, admin.getDatabase()) ) {
-                System.out.println("Invalid or duplicate ID.");
-            }
-            if(!Validation.isValidID(id,'E')){
-                System.out.println("Invalid Employee ID. (format:E####)");
-            }
-        } while (!Validation.isValidID(id, admin.getDatabase())||!Validation.isValidID(id,'E'));
+        System.out.print("Enter Employee ID: ");
+        id = scanner.nextLine();
+        id = id.trim();
 
         String name;
-        do {
-            System.out.print("Enter Employee Name: ");
-            name = scanner.nextLine();
-            if (!Validation.isValidName(name)) {
-                System.out.println("Invalid name.");
-            }
-        } while (!Validation.isValidName(name));
+        System.out.print("Enter Employee Name: ");
+        name = scanner.nextLine();
 
         String email;
-        do {
-            System.out.print("Enter Employee Email: ");
-            email = scanner.nextLine();
-            if (!Validation.isValidEmail(email)) {
-                System.out.println("Invalid email.");
-            }
-        } while (!Validation.isValidEmail(email));
+        System.out.print("Enter Employee Email: ");
+        email = scanner.nextLine();
 
         System.out.print("Enter Employee Address: ");
         String address = scanner.nextLine();
 
         String phone;
-        do {
-            System.out.print("Enter Employee Phone: ");
-            phone = scanner.nextLine();
-            if (!Validation.isValidNumber(phone)) {
-                System.out.println("Invalid phone number.");
-            }
-        } while (!Validation.isValidNumber(phone));
+        System.out.print("Enter Employee Phone: ");
+        phone = scanner.nextLine();
 
         admin.addEmployee(id, name, email, address, phone);
-        System.out.println("Employee added.");
+
+
     }
 
     public static void employeeLogin() {
