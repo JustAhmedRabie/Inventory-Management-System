@@ -62,6 +62,8 @@ public class Validation {
 
 
     public static boolean isValidEmail(String email) {
+        
+        email = email.trim();
 
         String regex = "^[a-zA-Z0-9][._]?[a-zA-Z0-9]+([-._][a-zA-Z0-9]+(_?[a-zA-Z0-9]+)*)*@[a-zA-Z0-9]+([-.][a-zA-Z0-9]+)*\\.[a-zA-Z]{2,4}$";
 
