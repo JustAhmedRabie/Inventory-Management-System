@@ -52,6 +52,7 @@ public class AdminRole extends UserRole {
          
               
          database.insertRecord(new EmployeeUser(employeeId,name,email,address,phoneNumber));
+         System.out.println(employeeId + " successfully added.");
      }
     
      
@@ -67,8 +68,10 @@ public class AdminRole extends UserRole {
     
      
      public void removeEmployee(String key){
-         if(database.contains(key))
+         if(database.contains(key)){
          database.deleteRecord(key);
+         System.out.println(key + " successfully removed.");
+         }
          else
              System.out.println("Employee ID not found.");
      }
