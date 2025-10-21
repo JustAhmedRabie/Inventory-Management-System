@@ -18,9 +18,42 @@ public class EmployeeRole extends UserRole {
     }
 
     public void addProduct(String productID, String productName, String manufacturerName, String supplierName, int quantity) {
+        if (!Validation.isNonEmpty(productID) || !Validation.isValidID(productID, 'P')) {
+            System.out.println("Invalid Product ID.");
+            return;
+        }
+        if (productsDatabase.contains(productID)) {
+            System.out.println("Product ID already exists.");
+            return;
+        }
+
+        if (!Validation.isValidName(productName)) {
+            System.out.println("Invalid product name. Use letters, spaces, or apostrophes only.");
+            return;
+        }
+        if (!Validation.isValidName(manufacturerName)) {
+            System.out.println("Invalid manufacturer name. Use letters, spaces, or apostrophes only.");
+            return;
+        }
+        if (!Validation.isValidName(supplierName)) {
+            System.out.println("Invalid supplier name. Use letters, spaces, or apostrophes only.");
+            return;
+        }
+        if (quantity < 0) {
+            System.out.println("Invalid quantity. It cannot be negative.");
+            return;
+        }
+        
+        productID = productID.trim();
+        productName = productName.trim();
+        manufacturerName = manufacturerName.trim();
+        supplierName = supplierName.trim();
+        
+
 
         Product product = new Product(productID, productName, manufacturerName, supplierName, quantity, 0);
         productsDatabase.insertRecord(product);
+        System.out.println("Product added successfully!");  
     }
 
     public void addProduct(String productID, String productName, String manufacturerName, String supplierName, int quantity, float price) {
