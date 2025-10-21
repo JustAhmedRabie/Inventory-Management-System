@@ -50,7 +50,13 @@ public class AdminRole extends UserRole {
          }
          
          
-              
+         name = name.trim();
+         address = address.trim();
+         email = email.trim();
+         employeeId = employeeId.trim();
+         phoneNumber = phoneNumber.trim();
+         
+         
          database.insertRecord(new EmployeeUser(employeeId,name,email,address,phoneNumber));
          System.out.println(employeeId + " successfully added.");
      }

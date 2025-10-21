@@ -11,6 +11,7 @@ public class Validation {
     }
 
     public static boolean isValidDate(String dateStr) {
+        dateStr = dateStr.trim();
         if (!isNonEmpty(dateStr)) return false;
 
         String[] parts = dateStr.split("-");
@@ -28,6 +29,8 @@ public class Validation {
     }
 
     public static boolean isValidNumber(String n) {
+        n = n.trim();
+        
         if (!isNonEmpty(n) || n.length()!=11) return false;
         for(int i=0;i<n.length();i++){
             char x = n.charAt(i);
@@ -95,6 +98,7 @@ public class Validation {
     }
 
     public static boolean isValidName(String name) {
+        name = name.trim();
         if (!isNonEmpty(name)) return false;
         for (int i = 0; i < name.length(); i++) {
             char c = name.charAt(i);
