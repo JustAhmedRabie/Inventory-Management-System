@@ -1,6 +1,7 @@
 P1001,PlayStation 5,Sony,TechStore,10,499.99
-P1002,Xbox Series X,Microsoft,GameHub,8,459.5
+P1002,Xbox Series X,Microsoft,GameHub,9,459.5
 P1003,Nintendo Switch,Nintendo,ElectroWorld,15,299.99
 P1004,Logitech Mouse,Logitech,PCStore,50,29.99
 P1005,HP Laptop,HP,CompuShop,5,899.0
-P1234,chips,layz,layz,100,5.0
+P1234,chips,layz,layz,101,5.0
+P1212,test,test,test,5,250.0
