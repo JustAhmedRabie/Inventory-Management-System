@@ -95,8 +95,7 @@ public class InventoryManagementSystem {
         }
     }
 
-    private static void GetEmployeeList(AdminRole admin)
-    {
+    private static void GetEmployeeList(AdminRole admin) {
         EmployeeUser[] list = admin.getListOfEmployees();
         System.out.println("Employees:");
         for (EmployeeUser e : list) {
@@ -104,8 +103,7 @@ public class InventoryManagementSystem {
         }
     }
 
-    private static void RemoveEmployee(AdminRole admin)
-    {
+    private static void RemoveEmployee(AdminRole admin) {
         String id;
         System.out.print("Enter Employee ID to remove: ");
         id = scanner.nextLine();
@@ -113,8 +111,7 @@ public class InventoryManagementSystem {
 
     }
 
-    private static void AddEmployee(AdminRole admin)
-    {
+    private static void AddEmployee(AdminRole admin) {
         String id;
         System.out.print("Enter Employee ID: ");
         id = scanner.nextLine();
@@ -136,7 +133,6 @@ public class InventoryManagementSystem {
         phone = scanner.nextLine();
 
         admin.addEmployee(id, name, email, address, phone);
-
 
     }
 
@@ -243,16 +239,8 @@ public class InventoryManagementSystem {
         productsDatabase.readFromFile();
         System.out.println("\n--- Add New Product ---");
         System.out.print("Enter Product ID: ");
-        String productID = scanner.nextLine().trim();
-        if (productsDatabase.contains(productID))
-        {
-            System.out.println("Product already exists.");
-            return;
-        }
-        if(!Validation.isValidID(productID,'P')){
-            System.out.println("Invalid product ID! (ID format:P####)");
-            return;
-        }
+        String productID = scanner.nextLine();
+
         System.out.print("Enter Product Name: ");
         String productName = scanner.nextLine();
 
@@ -263,31 +251,16 @@ public class InventoryManagementSystem {
         String supplierName = scanner.nextLine();
 
         int quantity = 0;
-        boolean validQuantity = false;
-        while (!validQuantity) {
-            try {
-                System.out.print("Enter Quantity: ");
-                quantity = Integer.parseInt(scanner.nextLine());
-                validQuantity = true;
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid quantity. Please enter a valid number.");
-            }
-        }
+
+        System.out.print("Enter Quantity: ");
+        quantity = Integer.parseInt(scanner.nextLine());
 
         float price = 0;
-        boolean validPrice = false;
-        while (!validPrice) {
-            try {
-                System.out.print("Enter Price: ");
-                price = Float.parseFloat(scanner.nextLine());
-                validPrice = true;
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid price. Please enter a valid number.");
-            }
-        }
+
+        System.out.print("Enter Price: ");
+        price = Float.parseFloat(scanner.nextLine());
 
         employeeRole.addProduct(productID, productName, manufacturerName, supplierName, quantity, price);
-        System.out.println("Product added successfully!");
     }
 
     private static void viewPurchasingOperations(EmployeeRole employeeRole) {
@@ -371,17 +344,13 @@ public class InventoryManagementSystem {
         double refundAmount = employeeRole.returnProduct(customerSSN, productID, purchaseDate, returnDate);
         CustomerProductDatabase customerProductDatabase = new CustomerProductDatabase("CustomersProducts.txt");
         customerProductDatabase.readFromFile();
-        CustomerProduct customerProduct = (CustomerProduct)customerProductDatabase.getRecord(productID);
+        CustomerProduct customerProduct = (CustomerProduct) customerProductDatabase.getRecord(productID);
 
-        if (!customerProduct.isPaid() && refundAmount >= 0)
-        {
+        if (!customerProduct.isPaid() && refundAmount >= 0) {
             System.out.println("Product returned successfully!, but it wasn't paid yet so there won't be a refund.");
-        }
-        else if (refundAmount >= 0)
-        {
+        } else if (refundAmount >= 0) {
             System.out.println("Product returned successfully! Refund amount: $" + refundAmount);
-        } else
-        {
+        } else {
             System.out.println("Failed to return product. Check dates and product availability.");
         }
     }
