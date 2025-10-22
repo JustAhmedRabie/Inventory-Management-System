@@ -123,6 +123,7 @@ public class EmployeeRole extends UserRole {
     {
         if (!productsDatabase.contains(productID))
         {
+            System.out.println("Failed to purchase product. Check if product exists and has sufficient quantity.");
             return false;
         }
 
@@ -130,6 +131,7 @@ public class EmployeeRole extends UserRole {
 
         if (product.getQuantity() == 0)
         {
+            System.out.println("Failed to purchase product. Check if product exists and has sufficient quantity.");
             return false;
         }
 
@@ -149,20 +151,26 @@ public class EmployeeRole extends UserRole {
 
         if (returnDate.isBefore(purchaseDate))
         {
+            System.out.println("Return date is invalid!");
             return -1;
         }
 
         if (!productsDatabase.contains(productID))
         {
+            System.out.println("Product could not be found!");
             return -1;
         }
 
         String key = customerSSN + "," + productID + "," + purchaseDate;
         if (!customerProductDatabase.contains(key))
         {
+            System.out.println("Couldn't find purchase record!");
             return -1;
         }
-        if (returnDate.isAfter(purchaseDate.plusDays(14))) return -1;
+        if (returnDate.isAfter(purchaseDate.plusDays(14))){
+            System.out.println("Can't return product after 14 days!");
+            return -1;
+        }
 
         Product product = (Product)productsDatabase.getRecord(productID);
         product.setQuantity(product.getQuantity() + 1);
@@ -198,9 +206,10 @@ public class EmployeeRole extends UserRole {
         if (updated)
         {
             customerProductDatabase.saveToFile();
+            System.out.println("Payment applied successfully!");
             return true;
         }
-
+        System.out.println("Can't apply payment!");
         return false;
     }
 
